@@ -16,7 +16,7 @@ const TodoApp = () => {
   useEffect(() => {
     fetch('https://flask-api-3jos.onrender.com/api/todos') // Replace with your Flask API URL
       .then(response => response.json())
-      .then(data => setTodos(data.todos))
+      .then(data => setTodos(data))
       .catch(error => {
         console.error(error);
         setTodos([]); // Set an empty array in case of error
@@ -35,7 +35,7 @@ const TodoApp = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ todo: newTodo }),
+        body: JSON.stringify({ title: newTodo }),
       })
         .then(response => response.json())
         .then(data => {
